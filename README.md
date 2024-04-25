@@ -1,12 +1,12 @@
 # LinkedGen Project
 
 ![login](/client/public/img/screenshot/login_linkedgen.png "Login")
-![Dashboard Overview](/client/public/img/screenshot/Dashboard.png. "Dashboard")
+![Dashboard Overview](/client/public/img/screenshot/Dashboard.png "Dashboard")
 ![Settings to be customized](/client/public/img/screenshot/settings.png "Customized Settings")
 ![Steps Styleguide Creation](/client/public/img/screenshot/step_style.png "Styleguide")
-![Content Integration](/client/public/img/screenshot/examples.png.png. "Example Content")
-![Postings](/client/public/img/screenshot/posts.png "Content Creation")
-![Account Update](/client/public/img/screenshot/account.png.png "Profile Update")
+![Content Integration](/client/public/img/screenshot/examples.png "Example Content")
+![Postings](/client/public/img/screenshot/post_crud.png "CRUPD Operation Content")
+![Account Update](/client/public/img/screenshot/account.png "Profile Update")
 
 ## Overview
 
