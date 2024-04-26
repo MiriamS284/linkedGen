@@ -14,6 +14,13 @@ const Form = styled.div`
   background-color: #ffffff;
   border-radius: 8px;
   margin: 20px;
+
+  @media (max-width: 768px) {
+    padding: 5px;
+    margin: 5px;
+    font-size: 1.2rem;
+    height: auto;
+  }
 `;
 
 const FormRow = styled.div`
@@ -34,6 +41,15 @@ const ToggleContainer = styled.div`
   flex: 1;
 `;
 
+const Icon = styled.span`
+  display: inline-flex;
+  font-size: 24px;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+`;
+
 function SettingsForm() {
   return (
     <>
@@ -41,13 +57,13 @@ function SettingsForm() {
         <FormRow>
           <Label>Dunkelmodus aktivieren:</Label>
           <ToggleContainer>
-            <span>
-              <HiOutlineSun size={24} />
-            </span>
+            <Icon>
+              <HiOutlineSun />
+            </Icon>
             <SwitchButton />
-            <span>
-              <HiOutlineMoon size={24} />
-            </span>
+            <Icon>
+              <HiOutlineMoon />
+            </Icon>
           </ToggleContainer>
         </FormRow>
       </Form>
@@ -55,13 +71,13 @@ function SettingsForm() {
         <FormRow>
           <Label>Benutzerdaten für Postgenerierung:</Label>
           <ToggleContainer>
-            <span>
-              <HiOutlineNoSymbol size={24} />
-            </span>
+            <Icon>
+              <HiOutlineNoSymbol />
+            </Icon>
             <SwitchButton />
-            <span>
-              <HiOutlineCheck size={24} />
-            </span>
+            <Icon>
+              <HiOutlineCheck />
+            </Icon>
           </ToggleContainer>
         </FormRow>
       </Form>
@@ -70,13 +86,13 @@ function SettingsForm() {
         <FormRow>
           <Label>Benachrichtigungen aktivieren:</Label>
           <ToggleContainer>
-            <span>
-              <HiOutlineNoSymbol size={24} />
-            </span>
+            <Icon>
+              <HiOutlineNoSymbol />
+            </Icon>
             <SwitchButton />
-            <span>
-              <HiOutlineCheck size={24} />
-            </span>
+            <Icon>
+              <HiOutlineCheck />
+            </Icon>
           </ToggleContainer>
         </FormRow>
       </Form>
@@ -84,13 +100,13 @@ function SettingsForm() {
         <FormRow>
           <Label>Benutzerdefinierte Settings:</Label>
           <ToggleContainer>
-            <span>
-              <HiOutlineNoSymbol size={24} />
-            </span>
+            <Icon>
+              <HiOutlineNoSymbol />
+            </Icon>
             <SwitchButton />
-            <span>
-              <HiOutlineCheck size={24} />
-            </span>
+            <Icon>
+              <HiOutlineCheck />
+            </Icon>
           </ToggleContainer>
         </FormRow>
       </Form>
@@ -98,13 +114,13 @@ function SettingsForm() {
         <FormRow>
           <Label>Weitere benutzerdefinierte Settings:</Label>
           <ToggleContainer>
-            <span>
-              <HiOutlineNoSymbol size={24} />
-            </span>
+            <Icon>
+              <HiOutlineNoSymbol />
+            </Icon>
             <SwitchButton />
-            <span>
-              <HiOutlineCheck size={24} />
-            </span>
+            <Icon>
+              <HiOutlineCheck />
+            </Icon>
           </ToggleContainer>
         </FormRow>
       </Form>

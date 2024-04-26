@@ -17,6 +17,10 @@ const Form = styled.div`
   background-color: #ffffff;
   border-radius: 8px;
   margin: 20px;
+  @media (max-width: 768px) {
+    padding: 10px;
+    margin: 10px;
+  }
 `;
 
 const FormRow = styled.div`
@@ -24,11 +28,18 @@ const FormRow = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
+  @media (max-width: 768px) {
+    align-items: flex-start;
+  }
 `;
 
 const Label = styled.label`
   font-weight: bold;
-  margin-right: 10px;
+
+  @media (max-width: 768px) {
+    margin-right: 5px;
+    margin-bottom: 5px; // Fügt einen unteren Margin hinzu, um Raum zwischen Label und Select zu schaffen
+  }
 `;
 
 const LanguageSelector = () => {

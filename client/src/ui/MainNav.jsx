@@ -7,6 +7,7 @@ import {
   HiOutlineDocumentText,
 } from "react-icons/hi2";
 import { useAuth } from "../context/AuthContext";
+import { useSidebarVisibility } from "../context/VisibilityContext";
 
 const NavList = styled.ul`
   display: flex;
@@ -53,33 +54,40 @@ const StyledNavLink = styled(NavLink)`
 
 function MainNav() {
   const { currentUser } = useAuth();
+  const { toggleSidebar } = useSidebarVisibility();
   if (!currentUser) {
     return null;
   }
+
+  const handleNavLinkClick = () => {
+    if (window.innerWidth <= 768) {
+      toggleSidebar();
+    }
+  };
   return (
     <nav>
       <NavList>
         <li>
-          <StyledNavLink to="/dashboard">
+          <StyledNavLink to="/dashboard" onClick={handleNavLinkClick}>
             <HiOutlineHome />
             <span>Home</span>
           </StyledNavLink>
         </li>
 
         <li>
-          <StyledNavLink to="/users">
+          <StyledNavLink to="/users" onClick={handleNavLinkClick}>
             <HiOutlineUsers />
             <span>Profil</span>
           </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="/postings">
+          <StyledNavLink to="/postings" onClick={handleNavLinkClick}>
             <HiOutlineDocumentText />
             <span>Posts</span>
           </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="/settings">
+          <StyledNavLink to="/settings" onClick={handleNavLinkClick}>
             <HiOutlineCog6Tooth />
             <span>Settings</span>
           </StyledNavLink>

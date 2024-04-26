@@ -12,6 +12,13 @@ const StyledFooter = styled.footer`
   justify-content: center;
   align-items: center;
   height: 60px;
+
+  @media (max-width: 768px) {
+    footer {
+      padding: 10px 15px;
+      font-size: 14px;
+    }
+  }
 `;
 
 function Footer() {

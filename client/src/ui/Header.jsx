@@ -20,6 +20,7 @@ const LogoutIcon = styled(HiArrowRightOnRectangle)`
 `;
 const Username = styled.span`
   font-weight: bold;
+  margin-left: 20px;
 `;
 
 function Header() {
@@ -32,12 +33,17 @@ function Header() {
   return (
     <StyledHeader>
       <Username>
-        {currentUser ? `Angemeldet als: ${currentUser.username}` : ""}
+        {currentUser
+          ? `Angemeldet als: ${currentUser.username}`
+          : "Not logged in"}
       </Username>
       {currentUser ? (
         <LogoutIcon onClick={handleLogout} size="24" />
       ) : (
-        <HiMiniArrowLeftOnRectangle onClick={() => navigate("/login")} />
+        <HiMiniArrowLeftOnRectangle
+          onClick={() => navigate("/login")}
+          size="24"
+        />
       )}
     </StyledHeader>
   );

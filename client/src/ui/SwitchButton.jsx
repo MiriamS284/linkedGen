@@ -22,6 +22,15 @@ const Slider = styled.span`
     transition: 0.4s;
     border-radius: 50%;
   }
+
+  @media (max-width: 768px) {
+    border-radius: 20px;
+
+    &:before {
+      height: 16px;
+      width: 16px;
+    }
+  }
 `;
 
 const Input = styled.input`
@@ -44,6 +53,11 @@ const SwitchLabel = styled.label`
   width: 80px;
   height: 24px;
   margin: 0 10px;
+
+  @media (max-width: 768px) {
+    width: 60px; // Kleinerer Schalter
+    height: 20px;
+  }
 `;
 
 function Switch({ isOn, handleToggle }) {

@@ -26,15 +26,25 @@ Every feature and integration in LinkedGen is crafted with a focus on profession
 
 This structured approach to both technology and user experience makes LinkedGen a standout solution for generating high-quality content efficiently and effectively.
 
-## CRUD Operations
+## Features
 
-LinkedGen supports comprehensive CRUD (Create, Read, Update, Delete) operations to manage generated content efficiently. This functionality allows users to:
+### Authentication
 
-Create: Generate new content using custom style guides and save them directly into the application.
-Read: Access and review generated content anytime through a user-friendly dashboard interface.
-Update: Make modifications to existing content, allowing for continuous improvement and adaptation to changing requirements.
-Delete: Remove content that is no longer needed, helping to maintain a clean and organized content repository.
-These operations ensure that users have full control over their content lifecycle within the LinkedGen platform, enhancing content management and operational efficiency.
+- **User Authentication**: Secure login and registration system with password hashing to ensure data security.
+- **Profile Management**: Allows users to update their profile information including password changes with double-entry verification to prevent errors.
+
+### Styleguide Generator
+
+- **Multistep Form**: Users can create custom style guides through a multistep form, enabling personalized content generation strategies.
+
+### Posts
+
+- **CRUD Operations**: Users can create, read, update, and delete posts, providing full control over the content they generate.
+
+### Settings
+
+- **Customizable User Preferences**: Users can customize their experience by enabling dark mode, choosing language preferences, and adjusting other settings.
+- **Data Transmission Preferences**: Users can decide how their data is handled and transmitted, ensuring their privacy and control over their information.
 
 ### Technology Stack
 

@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components";
 
-// Container für die gesamte Form
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -12,13 +11,15 @@ export const FormContainer = styled.div`
   }
 `;
 
-// Styling für die Schritte-Übersicht
 export const StepsContainer = styled.div`
-  display: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 1rem;
   @media (min-width: 768px) {
-    display: flex;
     flex-direction: column;
     margin-right: 2rem;
+    display: flex;
   }
 `;
 

@@ -26,6 +26,17 @@ const ModalWrapper = styled.div`
   max-width: 90%;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    padding: 10px;
+    top: 0;
+    left: 0;
+    transform: none;
+  }
 `;
 
 const CloseButton = styled.button`

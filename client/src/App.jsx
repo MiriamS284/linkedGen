@@ -1,6 +1,7 @@
 import { AuthProvider } from "./context/AuthContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { SidebarVisibilityProvider } from "./context/VisibilityContext";
 import ProtectedRoute from "./ui/ProtectedRoute";
 import GlobalStyles from "./styles/GlobalStyles";
 import AppLayout from "./ui/AppLayout";
@@ -24,26 +25,28 @@ function App() {
         <AuthProvider>
           <BrowserRouter>
             <Toaster />
-            <Routes>
-              <Route path="/" element={<AppLayout />}>
-                <Route index element={<Home />} />
-                <Route path="login" element={<Login />} />
-                <Route path="users" element={<Users />} />
-                <Route path="linkedgen" element={<LinkedGen />} />
-                <Route path="settings" element={<Settings />} />
-                <Route path="postings" element={<Posts />} />
-                <Route path="*" element={<PageNotFound />} />
+            <SidebarVisibilityProvider>
+              <Routes>
+                <Route path="/" element={<AppLayout />}>
+                  <Route index element={<Home />} />
+                  <Route path="login" element={<Login />} />
+                  <Route path="users" element={<Users />} />
+                  <Route path="linkedgen" element={<LinkedGen />} />
+                  <Route path="settings" element={<Settings />} />
+                  <Route path="postings" element={<Posts />} />
+                  <Route path="*" element={<PageNotFound />} />
 
-                <Route
-                  path="dashboard"
-                  element={
-                    <ProtectedRoute>
-                      <Dashboard />
-                    </ProtectedRoute>
-                  }
-                />
-              </Route>
-            </Routes>
+                  <Route
+                    path="dashboard"
+                    element={
+                      <ProtectedRoute>
+                        <Dashboard />
+                      </ProtectedRoute>
+                    }
+                  />
+                </Route>
+              </Routes>
+            </SidebarVisibilityProvider>
           </BrowserRouter>
         </AuthProvider>
       </QueryClientProvider>
