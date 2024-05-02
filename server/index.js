@@ -19,7 +19,12 @@ const corsOptions = {
     "http://localhost:5173",
     "https://linked-21z6lp13a-miriams284s-projects.vercel.app",
   ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 };
+app.get("/api/greeting", (req, res) => {
+  res.send("Hello from the server!");
+});
 
 app.use(cors(corsOptions));
 app.use(express.json());
