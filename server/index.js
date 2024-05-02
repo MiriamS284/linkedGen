@@ -20,6 +20,7 @@ const corsOptions = {
     "https://linked-21z6lp13a-miriams284s-projects.vercel.app",
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"],
 };
 app.get("/api/greeting", (req, res) => {
