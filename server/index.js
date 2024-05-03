@@ -13,8 +13,7 @@ import connectDB from "./config/dbConnect.js";
 connectDB();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
-
+const PORT = process.env.PORT || 10000;
 const corsOptions = {
   origin: ["http://localhost:5173", "https://linked-gen-iota.vercel.app"],
   methods: ["GET", "POST", "PUT", "DELETE"],
@@ -57,4 +56,6 @@ app.use((err, req, res, next) => {
   res.status(500).send("Something broke!");
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
+});
