@@ -15,17 +15,11 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 const corsOptions = {
-  origin: [
-    "http://localhost:5173",
-    "https://linked-21z6lp13a-miriams284s-projects.vercel.app",
-  ],
+  origin: ["http://localhost:5173", "https://linked-gen-iota.vercel.app"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"],
 };
-app.get("/api/greeting", (req, res) => {
-  res.send("Hello from the server!");
-});
 
 app.use(cors(corsOptions));
 app.use(express.json());
