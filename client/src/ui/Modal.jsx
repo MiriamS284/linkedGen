@@ -22,8 +22,9 @@ const ModalWrapper = styled.div`
   padding: 20px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
   border-radius: 8px;
-  width: auto;
+  width: 50%;
   max-width: 90%;
+  height: auto;
   display: flex;
   flex-direction: column;
 
@@ -51,6 +52,9 @@ const CloseButton = styled.button`
 
 const ModalContent = styled.div`
   padding: 20px;
+  @media (min-width: 768px) {
+    padding: 40px;
+  }
 `;
 
 function Modal({ children, onClose }) {

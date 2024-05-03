@@ -16,6 +16,9 @@ const Input = styled.input`
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 100%;
+  @media (min-width: 768px) {
+    padding: 15px;
+  }
 `;
 
 const TextArea = styled.textarea`
