@@ -14,17 +14,25 @@ connectDB();
 
 const app = express();
 const PORT = process.env.PORT || 10000;
+
 const corsOptions = {
-  origin: ["http://localhost:5173", "https://linked-gen-iota.vercel.app"],
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  origin: [
+    "https://linked-f43y23kty-miriams284s-projects.vercel.app",
+    "https://linked-gen-iota.vercel.app",
+    "http://localhost:5173",
+  ],
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"],
+  optionsSuccessStatus: 200,
 };
+
+app.use(cors(corsOptions));
 
 // Apply security and data processing middleware
 
 app.use(helmet());
-app.use(cors(corsOptions));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -44,6 +52,10 @@ app.use((req, res, next) => {
 });
 
 // Define routes
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRoutes);
