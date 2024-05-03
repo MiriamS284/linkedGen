@@ -1,13 +1,12 @@
 import axios from "axios";
 
-const axiosClient = axios.create({
-  baseURL: "http://localhost:5000/api",
-  headers: {
-    "Content-Type": "application/json",
-  },
+const API_URL = import.meta.env.VITE_API_BASE_URL;
+
+const api = axios.create({
+  baseURL: `${API_URL}/api`,
 });
 
-axiosClient.interceptors.request.use(
+api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -20,4 +19,4 @@ axiosClient.interceptors.request.use(
   }
 );
 
-export default axiosClient;
+export default api;

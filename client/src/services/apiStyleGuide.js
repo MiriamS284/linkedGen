@@ -1,19 +1,10 @@
-import axios from "axios";
-
-const API_URL = "${process.env.REACT_APP_API_BASE_URL}/api";
+import api from "./axiosClient";
+import { toast } from "react-hot-toast";
 
 export const submitFormData = async (formData) => {
   try {
-    const response = await axios.post(
-      `${API_URL}/styleguide/generate`,
-      formData,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }
-    );
+    const response = await api.post(`/styleguide/generate`, formData);
+    toast.success("Formulardaten erfolgreich eingereicht!");
     return response.data;
   } catch (error) {
     console.error("Error submitting form data:", error);

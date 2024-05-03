@@ -1,30 +1,32 @@
-import axios from "axios";
+import api from "./axiosClient";
+import { toast } from "react-hot-toast";
 
-const API_URL = "${process.env.REACT_APP_API_BASE_URL}/api";
-
-axios.defaults.baseURL = API_URL;
-axios.interceptors.request.use(function (config) {
-  const token = localStorage.getItem("token");
-  config.headers.Authorization = token ? `Bearer ${token}` : "";
-  return config;
-});
-
+// Funktion zum Einloggen eines Benutzers
 export async function login(username, password) {
-  const response = await axios.post(`/auth/login`, {
-    username,
-    password,
-  });
-  if (response.data.token) {
-    localStorage.setItem("token", response.data.token);
-    axios.defaults.headers.common[
-      "Authorization"
-    ] = `Bearer ${response.data.token}`;
+  try {
+    const response = await api.post(`/auth/login`, {
+      username,
+      password,
+    });
+    if (response.data.token) {
+      localStorage.setItem("token", response.data.token);
+      toast.success("Login erfolgreich!");
+    } else {
+      toast.error("Kein Token erhalten, Login fehlgeschlagen.");
+    }
+    return response.data;
+  } catch (error) {
+    toast.error(
+      "Login fehlgeschlagen: " +
+        (error.response?.data?.message || error.message)
+    );
+    throw error;
   }
-  return response.data;
 }
 
+// Funktion zum Abrufen der aktuellen Benutzerdaten
 export async function getCurrentUser() {
-  const response = await axios.get(`/user/profile`);
+  const response = await api.get(`/user/profile`);
   if (response.data && response.data.user) {
     return response.data.user;
   } else {
@@ -32,30 +34,50 @@ export async function getCurrentUser() {
   }
 }
 
+// Funktion zum Registrieren eines neuen Benutzers
 export async function signup(company, username, email, password) {
-  const response = await axios.post(`/auth/signup`, {
-    company,
-    username,
-    email,
-    password,
-  });
-  if (response.data.token) {
-    localStorage.setItem("token", response.data.token);
-    axios.defaults.headers.common[
-      "Authorization"
-    ] = `Bearer ${response.data.token}`;
+  try {
+    const response = await api.post(`/auth/signup`, {
+      company,
+      username,
+      email,
+      password,
+    });
+    if (response.data.token) {
+      localStorage.setItem("token", response.data.token);
+      toast.success("Registrierung erfolgreich!");
+    } else {
+      toast.error("Registrierung fehlgeschlagen.");
+    }
+    return response.data;
+  } catch (error) {
+    toast.error(
+      "Registrierung fehlgeschlagen: " +
+        (error.response?.data?.message || error.message)
+    );
+    throw error;
   }
-  return response.data;
 }
 
+// Funktion zum Aktualisieren des Benutzerprofils
 export const updateProfile = async (profileData) => {
-  const response = await axios.put(`/user/profile`, profileData);
-  return response.data.user;
+  try {
+    const response = await api.put(`/user/profile`, profileData);
+    toast.success("Profil erfolgreich aktualisiert!");
+    return response.data.user;
+  } catch (error) {
+    toast.error(
+      "Profilupdate fehlgeschlagen: " +
+        (error.response?.data?.message || error.message)
+    );
+    throw error;
+  }
 };
 
+// Funktion zum Ändern des Passworts
 export const updatePassword = async (currentPassword, newPassword) => {
   try {
-    const response = await axios.put("/user/changePassword", {
+    const response = await api.put("/user/changePassword", {
       currentPassword,
       newPassword,
     });
@@ -68,15 +90,12 @@ export const updatePassword = async (currentPassword, newPassword) => {
   }
 };
 
+// Funktion zum Auffrischen des Authentifizierungstokens
 export async function refreshAuthToken() {
   try {
-    const response = await axios.post("/auth/refresh-token");
+    const response = await api.post("/auth/refresh-token");
     if (response.data.token) {
       localStorage.setItem("token", response.data.token);
-      axios.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${response.data.token}`;
-      return response.data.token;
     } else {
       throw new Error("Token refresh failed");
     }
@@ -85,9 +104,10 @@ export async function refreshAuthToken() {
   }
 }
 
+// Funktion zum Ausloggen eines Benutzers
 export async function logout() {
   localStorage.removeItem("token");
-  delete axios.defaults.headers.common["Authorization"];
+  toast.success("Logout erfolgreich!");
 }
 
 /*
