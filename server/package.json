@@ -85,6 +85,7 @@
     "has-symbols": "^1.0.3",
     "has-unicode": "^2.0.1",
     "hasown": "^2.0.2",
+    "helmet": "^7.1.0",
     "http-errors": "^2.0.0",
     "https-proxy-agent": "^5.0.1",
     "iconv-lite": "^0.4.24",

@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import helmet from "helmet";
 
 import { config } from "dotenv";
 config();
@@ -21,31 +22,39 @@ const corsOptions = {
   allowedHeaders: ["Content-Type", "Authorization"],
 };
 
+// Apply security and data processing middleware
+
+app.use(helmet());
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
+});
+// HTTPS Redirect Middleware
 app.use((req, res, next) => {
-  const user = req.user
-    ? {
-        id: req.user.userId,
-        username: req.user.username,
-      }
-    : "Guest";
-
-  console.log("Request Details:", {
-    path: req.path,
-    method: req.method,
-    body: req.body,
-    user: user,
-    headers: req.headers.authorization,
-  });
+  if (
+    req.headers["x-forwarded-proto"] !== "https" &&
+    process.env.NODE_ENV === "production"
+  ) {
+    return res.redirect(`https://${req.headers.host}${req.url}`);
+  }
   next();
 });
+
+// Define routes
 
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRoutes);
 app.use("/api/styleguide", styleguideRoutes);
 app.use("/api/posts", postsRoutes);
+
+// Error handling middleware should be last
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
+});
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
