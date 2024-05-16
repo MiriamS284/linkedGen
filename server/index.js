@@ -17,10 +17,8 @@ const PORT = process.env.PORT || 10000;
 
 const corsOptions = {
   origin: [
-    "https://linked-r349b0ht0-miriams284s-projects.vercel.app",
-    "https://linked-gen-git-master-miriams284s-projects.vercel.app",
-    "https://linked-f43y23kty-miriams284s-projects.vercel.app",
-    "https://linked-gen-iota.vercel.app",
+    "http://linkedgen.online",
+    "https://linkedgen.online",
     "http://localhost:5173",
   ],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
