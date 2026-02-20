@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = "http://linkedgen.online";
+//const API_URL = "http://linkedgen.online";
+const API_URL = "http://localhost:10000";
 
 const api = axios.create({
   baseURL: `${API_URL}/api`,

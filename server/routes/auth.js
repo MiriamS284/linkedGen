@@ -8,6 +8,8 @@ import authenticateToken from "../middleware/authMiddleware.js";
 const router = express.Router();
 
 router.post("/login", async (req, res) => {
+  console.log("Login Request Headers:", req.headers); // Log request headers
+  console.log("Login Request Body:", req.body);
   const { username, password } = req.body;
 
   const user = await User.findOne({ username });
