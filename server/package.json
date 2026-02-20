@@ -57,7 +57,7 @@
     "dotenv": "^16.4.5",
     "ecdsa-sig-formatter": "^1.0.11",
     "ee-first": "^1.1.1",
-    "ejs": "^3.0.2",
+    "ejs": "^4.0.1",
     "emoji-regex": "^8.0.0",
     "encodeurl": "^1.0.2",
     "es-define-property": "^1.0.0",
